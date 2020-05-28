@@ -1,0 +1,20 @@
+@startuml
+
+start
+
+partition "Debug bootstrap code" {
+  :Create thread for listener on debug port;
+  :Find Lambda runtime path in command-line arguments;
+  :Update sys.path to include Lambda runtime directory;
+  :Import Lambda runtime by name;
+  :Invoke Lambda runtime's main() function;
+   partition Listener {
+    :Receive callback port number;
+    :Connect to callback port number on localhost;
+    :Invoke settrace to pause execution;
+   }
+}
+
+stop
+
+@enduml

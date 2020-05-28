@@ -1,0 +1,18 @@
+@startuml
+
+start
+
+if (Is debug flag set?) then (yes)
+  if (Is the debug port set?) then (no)
+    :Set debug port to a random value;
+  else (yes)
+  endif
+  :Set debug flags on runtime;
+else (no)
+endif
+
+:Invoke the runtime;
+
+stop
+
+@enduml
